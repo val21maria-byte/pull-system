@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <title>PULL — 샘플 운영 시스템</title>
+  <meta name="description" content="패션 브랜드와 쇼룸을 위한 협찬 샘플 운영 시스템. 대여, 반납, 현재 상태를 한눈에." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+
+  <header class="site-header" id="siteHeader">
+    <a class="wordmark" href="#home" aria-label="PULL home">PULL</a>
+    <nav class="public-nav">
+      <a href="#product">서비스 소개</a>
+      <a href="#workflow">이용 방식</a>
+      <a href="#pricing">요금</a>
+      <button class="btn btn-dark" data-open-checkout>시작하기</button>
+    </nav>
+    <button class="mobile-menu" id="mobileMenu">☰</button>
+  </header>
+
+  <main id="marketing">
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow">패션 브랜드를 위한 샘플 운영 시스템</div>
+        <h1>협찬 샘플,<br><span>지금 누구에게 있나요?</span></h1>
+        <p class="hero-sub">
+          PULL은 패션 브랜드와 쇼룸의 샘플 대여·반납·현재 상태를
+          QR 하나로 기록하는 운영 시스템입니다.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-light btn-lg" data-open-checkout>스타터 시작하기 · ₩49,000</button>
+          <button class="btn btn-ghost btn-lg" data-open-app>제품 데모 보기</button>
+        </div>
+        <div class="hero-note">엑셀 없이, 분실 걱정 없이, 하나의 흐름으로.</div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <span>실시간 샘플 현황</span>
+            <span class="live-dot"><i></i> 진행중</span>
+          </div>
+          <div class="hero-product">
+            <img src="assets/jacket.png" alt="PULL QR이 부착된 재킷">
+          </div>
+          <div class="hero-stats">
+            <div><small>대여중</small><b>12</b></div>
+            <div><small>오늘 반납</small><b>4</b></div>
+            <div><small>연체</small><b>2</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="logo-strip">
+      <span>대여</span><i>•</i><span>반납</span><i>•</i><span>사용처</span><i>•</i><span>기록</span><i>•</i><span>아카이브</span>
+    </section>
+
+    <section class="statement" id="product">
+      <div class="section-kicker">문제</div>
+      <h2>샘플은 계속 움직이는데,<br>기록은 흩어져 있습니다.</h2>
+      <p>카톡, 엑셀, 메모, 기억에 의존하던 샘플 이동을 하나의 운영 화면으로 정리합니다.</p>
+      <div class="statements-grid">
+        <article>
+          <span class="num">01</span>
+          <h3>누가 가지고 있지?</h3>
+          <p>현재 대여자와 사용처를 바로 확인합니다.</p>
+        </article>
+        <article>
+          <span class="num">02</span>
+          <h3>언제 돌아오지?</h3>
+          <p>반납 예정일과 연체 샘플을 놓치지 않습니다.</p>
+        </article>
+        <article>
+          <span class="num">03</span>
+          <h3>지금 빌려줄 수 있나?</h3>
+          <p>대여 가능·대여 중·연체 상태를 실시간으로 구분합니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="workflow-section" id="workflow">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">하나의 흐름</div>
+          <h2>스캔 → 대여 등록 → 확인 → 반납</h2>
+        </div>
+        <p>복잡한 교육 없이, 현장에서 바로 쓰는 흐름만 남겼습니다.</p>
+      </div>
+
+      <div class="workflow-grid">
+        <article class="flow-card">
+          <div class="flow-index">01</div>
+          <h3>스캔</h3>
+          <p>샘플의 PULL QR을 스캔합니다.</p>
+          <img src="assets/qr/PULL-0001.png" alt="PULL QR">
+        </article>
+        <article class="flow-card">
+          <div class="flow-index">02</div>
+          <h3>대여 등록</h3>
+          <p>대여자와 반납 예정일을 기록합니다.</p>
+          <div class="mini-form">
+            <span>대여자</span><b>김민수 스타일리스트</b>
+            <span>반납 예정</span><b>Oct 12</b>
+          </div>
+        </article>
+        <article class="flow-card">
+          <div class="flow-index">03</div>
+          <h3>확인</h3>
+          <p>현재 대여자와 샘플 상태를 한눈에 확인합니다.</p>
+          <div class="mini-status">
+            <span class="status-dot loan"></span><b>대여 중</b>
+            <small>Borrower · 김민수</small>
+          </div>
+        </article>
+        <article class="flow-card">
+          <div class="flow-index">04</div>
+          <h3>반납</h3>
+          <p>반납되면 한 번에 상태를 업데이트합니다.</p>
+          <div class="return-mark">✓</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="lookbook">
+      <div class="lookbook-copy">
+        <div class="section-kicker">패션 업계를 위해</div>
+        <h2>재고 관리가 아니라,<br>샘플 운영을 위해.</h2>
+        <p>의류, 가방, 액세서리, 슈즈까지. 각 샘플의 이동 히스토리가 하나의 자산이 됩니다.</p>
+        <button class="btn btn-dark" data-open-app>실제 화면 보기</button>
+      </div>
+      <div class="lookbook-grid">
+        <img src="assets/jacket.png" alt="재킷">
+        <img src="assets/bag.png" alt="가방">
+        <img src="assets/jeans.png" alt="청바지">
+        <img src="assets/hoodie.png" alt="후드">
+      </div>
+    </section>
+
+    <section class="pricing-section" id="pricing">
+      <div class="section-kicker">얼리 액세스</div>
+      <h2>작게 시작하고,<br>브랜드와 함께 확장합니다.</h2>
+      <div class="pricing-card">
+        <div>
+          <span class="pill">EARLY BRAND</span>
+          <h3>스타터</h3>
+          <p>샘플 운영을 처음 디지털화하는 브랜드를 위한 구성.</p>
+        </div>
+        <div class="price"><b>₩49,000</b><span>/ month</span></div>
+        <ul>
+          <li>샘플 최대 100개</li>
+          <li>QR 샘플 ID 스티커 100장 1회 포함</li>
+          <li>대여 / 반납 / 연체 관리</li>
+          <li>대여자 디렉토리</li>
+          <li>활동 로그 및 CSV 내보내기</li>
+        </ul>
+        <button class="btn btn-light" data-open-checkout>스타터 시작하기</button>
+      </div>
+      <p class="pricing-note">* 얼리 액세스 기준 월 49,000원. 가입 시 QR 샘플 ID 스티커 100장 1회 포함. 추가 스티커는 별도 구매입니다.</p>
+    </section>
+
+    <footer class="site-footer">
+      <div class="wordmark">PULL</div>
+      <p>패션 브랜드와 쇼룸을 위한 샘플 운영 시스템.</p>
+      <span>© 2026 PULL SYSTEM</span>
+    </footer>
+  </main>
+
+
+  <!-- CHECKOUT / ONBOARDING -->
+  <div id="checkoutShell" class="checkout-shell hidden">
+    <header class="checkout-header">
+      <button class="wordmark checkout-wordmark" id="checkoutHomeBtn">PULL</button>
+      <div class="checkout-header-center">
+        <span>얼리 액세스</span>
+        <b>스타터 · ₩49,000 / 월</b>
+      </div>
+      <button class="checkout-close" id="closeCheckout" aria-label="checkout close">×</button>
+    </header>
+
+    <div class="checkout-wrap">
+      <aside class="checkout-summary">
+        <div class="checkout-summary-sticky">
+          <span class="summary-kicker">PULL 스타터</span>
+          <h2>샘플 운영을<br>오늘부터 하나로.</h2>
+          <div class="summary-price"><b>₩49,000</b><span>/ month</span></div>
+          <ul>
+            <li><span>100</span> 샘플</li>
+            <li><span>100</span> QR 샘플 ID 스티커 100장 포함</li>
+            <li>대여 · 반납 · 연체 관리</li>
+            <li>대여자 관리</li>
+            <li>활동 기록 및 CSV 내보내기</li>
+          </ul>
+          <div class="kit-preview">
+            <div class="kit-sticker">
+              <b>PULL</b>
+              <div class="kit-qr">▦</div>
+              <small>PULL-0001</small>
+            </div>
+            <div>
+              <small>스타터 키트</small>
+              <b>QR 샘플 ID × 100</b>
+              <span>가입 완료 후 입력한 주소로 배송 준비</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="checkout-main">
+        <div class="checkout-progress" id="checkoutProgress">
+          <div class="progress-item active" data-progress="1"><span>1</span><b>플랜</b></div>
+          <i></i>
+          <div class="progress-item" data-progress="2"><span>2</span><b>브랜드</b></div>
+          <i></i>
+          <div class="progress-item" data-progress="3"><span>3</span><b>배송</b></div>
+          <i></i>
+          <div class="progress-item" data-progress="4"><span>4</span><b>계정</b></div>
+          <i></i>
+          <div class="progress-item" data-progress="5"><span>5</span><b>결제</b></div>
+        </div>
+
+        <section class="checkout-step" data-step="1">
+          <span class="checkout-step-kicker">1단계 · 플랜 확인</span>
+          <h2>PULL 스타터</h2>
+          <p class="checkout-lead">처음 샘플 운영을 디지털화하는 브랜드를 위한 Early Access 플랜입니다.</p>
+
+          <div class="plan-confirm">
+            <div>
+              <small>월 구독</small>
+              <b>₩49,000</b>
+              <span>매월 구독 · 언제든 해지 가능</span>
+            </div>
+            <div>
+              <small>웰컴 키트</small>
+              <b>QR 스티커 × 100</b>
+              <span>첫 가입 시 1회 포함</span>
+            </div>
+          </div>
+
+          <label class="agree-row">
+            <input type="checkbox" id="planAgree">
+            <span>스타터 플랜과 QR 스티커 100장 포함 조건을 확인했습니다.</span>
+          </label>
+
+          <div class="checkout-actions">
+            <span></span>
+            <button class="btn btn-dark checkout-next" data-next="2">브랜드 정보 입력 →</button>
+          </div>
+        </section>
+
+        <section class="checkout-step hidden" data-step="2">
+          <span class="checkout-step-kicker">2단계 · 브랜드 정보</span>
+          <h2>브랜드 정보를 알려주세요.</h2>
+          <p class="checkout-lead">PULL 워크스페이스와 스타터 Kit 주문 정보에 사용됩니다.</p>
+
+          <div class="checkout-form-grid">
+            <label class="full">브랜드 / 쇼룸명
+              <input id="coBrandName" placeholder="예: PULL STUDIO" autocomplete="organization">
+            </label>
+            <label>담당자 이름
+              <input id="coManagerName" placeholder="홍길동" autocomplete="name">
+            </label>
+            <label>담당자 역할
+              <input id="coManagerRole" placeholder="PR / Showroom / Founder">
+            </label>
+            <label>이메일
+              <input id="coEmail" type="email" placeholder="hello@brand.com" autocomplete="email">
+            </label>
+            <label>연락처
+              <input id="coPhone" placeholder="010-0000-0000" autocomplete="tel">
+            </label>
+            <label class="full">인스타그램 또는 웹사이트
+              <input id="coWebsite" placeholder="@brandname 또는 https://...">
+            </label>
+          </div>
+
+          <div class="checkout-actions">
+            <button class="btn btn-outline checkout-back" data-back="1">← 이전</button>
+            <button class="btn btn-dark checkout-next" data-next="3">배송 정보 입력 →</button>
+          </div>
+        </section>
+
+        <section class="checkout-step hidden" data-step="3">
+          <span class="checkout-step-kicker">3단계 · 배송 정보</span>
+          <h2>QR 스타터 키트 배송</h2>
+          <p class="checkout-lead">고유 샘플 ID가 들어간 PULL QR 스티커 100장을 보낼 주소입니다.</p>
+
+          <div class="checkout-form-grid">
+            <label>받는 분
+              <input id="coRecipient" placeholder="홍길동" autocomplete="name">
+            </label>
+            <label>우편번호
+              <input id="coZip" placeholder="00000" inputmode="numeric">
+            </label>
+            <label class="full">주소
+              <input id="coAddress1" placeholder="서울특별시 ...">
+            </label>
+            <label class="full">상세 주소
+              <input id="coAddress2" placeholder="건물명 / 층 / 호수">
+            </label>
+            <label class="full">배송 메모
+              <input id="coMemo" placeholder="예: 쇼룸 데스크에 맡겨주세요.">
+            </label>
+          </div>
+
+          <div class="shipping-card">
+            <div class="shipping-dot"></div>
+            <div>
+              <b>PULL 스타터 Kit · QR 100</b>
+              <span>결제 및 가입 완료 후 배송 준비 상태로 등록됩니다.</span>
+            </div>
+          </div>
+
+          <div class="checkout-actions">
+            <button class="btn btn-outline checkout-back" data-back="2">← 이전</button>
+            <button class="btn btn-dark checkout-next" data-next="4">계정 만들기 →</button>
+          </div>
+        </section>
+
+        <section class="checkout-step hidden" data-step="4">
+          <span class="checkout-step-kicker">4단계 · 계정 생성</span>
+          <h2>관리자 계정을 만드세요.</h2>
+          <p class="checkout-lead">가입 후 이 계정으로 PULL Dashboard에 로그인하게 됩니다.</p>
+
+          <div class="checkout-form-grid">
+            <label class="full">로그인 이메일
+              <input id="coLoginEmail" type="email" placeholder="admin@brand.com" autocomplete="username">
+            </label>
+            <label>비밀번호
+              <input id="coPassword" type="password" placeholder="8자 이상" autocomplete="new-password">
+            </label>
+            <label>비밀번호 확인
+              <input id="coPassword2" type="password" placeholder="한 번 더 입력" autocomplete="new-password">
+            </label>
+          </div>
+
+          <div class="security-note">
+            <b>계정 안내</b>
+            <span>현재 프로토타입에서는 계정 정보가 이 브라우저에만 저장됩니다. 실제 출시 시 서버 인증으로 교체됩니다.</span>
+          </div>
+
+          <div class="checkout-actions">
+            <button class="btn btn-outline checkout-back" data-back="3">← 이전</button>
+            <button class="btn btn-dark checkout-next" data-next="5">결제 단계 →</button>
+          </div>
+        </section>
+
+        <section class="checkout-step hidden" data-step="5">
+          <span class="checkout-step-kicker">5단계 · 결제</span>
+          <h2>₩49,000 / 월</h2>
+          <p class="checkout-lead">결제가 완료되면 PULL 워크스페이스가 활성화되고 스타터 Kit 주문이 생성됩니다.</p>
+
+          <div class="payment-demo-banner">
+            <span>테스트 모드</span>
+            <div>
+              <b>현재는 PG 테스트 전 단계입니다.</b>
+              <p>아래 버튼은 실제 카드에서 돈이 빠져나가지 않는 가입 시뮬레이션입니다. 실제 출시 시 이 영역을 토스페이먼츠/PG 결제창으로 교체합니다.</p>
+            </div>
+          </div>
+
+          <div class="payment-method-card">
+            <div class="payment-card-icon">CARD</div>
+            <div>
+              <b>카드 정기 결제</b>
+              <span>실제 서비스에서는 최초 1회 카드 인증 후 매월 49,000원이 결제됩니다.</span>
+            </div>
+            <i>→</i>
+          </div>
+
+          <div class="order-recap" id="checkoutRecap"></div>
+
+          <label class="agree-row">
+            <input type="checkbox" id="paymentAgree">
+            <span>월 49,000원 정기구독 및 스타터 Kit 주문 내용을 확인했습니다.</span>
+          </label>
+
+          <div class="checkout-actions">
+            <button class="btn btn-outline checkout-back" data-back="4">← 이전</button>
+            <button class="btn btn-dark checkout-pay" id="testPayBtn">테스트 결제 & PULL 시작</button>
+          </div>
+        </section>
+
+        <section class="checkout-step checkout-success hidden" data-step="success">
+          <div class="success-mark">✓</div>
+          <span class="checkout-step-kicker">PULL 시작 완료</span>
+          <h2>브랜드 워크스페이스가 준비됐습니다.</h2>
+          <p class="checkout-lead">스타터 플랜이 활성화되었고 QR 샘플 ID 100장 주문이 생성되었습니다.</p>
+
+          <div class="success-grid">
+            <div>
+              <small>플랜</small>
+              <b>스타터 · ₩49,000 / 월</b>
+            </div>
+            <div>
+              <small>QR 스타터 키트</small>
+              <b>스티커 100장 · 배송 준비중</b>
+            </div>
+            <div>
+              <small>주문번호</small>
+              <b id="successOrderNo">PULL-주문번호-0001</b>
+            </div>
+          </div>
+
+          <div class="success-address" id="successAddress"></div>
+
+          <button class="btn btn-dark btn-lg" id="enterWorkspaceBtn">PULL 대시보드 열기 →</button>
+        </section>
+      </main>
+    </div>
+  </div>
+
+
+  <!-- APP -->
+  <div id="appShell" class="app-shell hidden">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <button class="wordmark app-wordmark" id="closeApp">PULL</button>
+        <span>샘플 운영 시스템</span>
+      </div>
+
+      <nav class="app-nav" id="appNav">
+        <button class="active" data-page="dashboard"><span>⌂</span> 대시보드</button>
+        <button data-page="samples"><span>□</span> 샘플</button>
+        <button data-page="loans"><span>↗</span> 대여</button>
+        <button data-page="people"><span>○</span> 대여자</button>
+        <button data-page="activity"><span>≡</span> 활동기록</button>
+        <button data-page="scan"><span>⌁</span> 스캔</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button data-page="settings"><span>⚙</span> 설정</button>
+        <div class="brand-account">
+          <div class="avatar">PS</div>
+          <div><b>PULL STUDIO</b><small>관리자</small></div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="app-main">
+      <header class="app-topbar">
+        <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+        <div>
+          <small id="pageEyebrow">OVERVIEW</small>
+          <h2 id="pageTitle">Dashboard</h2>
+        </div>
+        <div class="topbar-actions">
+          <button class="icon-btn" id="exportBtn" title="CSV 내보내기">⇩</button>
+          <button class="btn btn-dark compact" id="newLoanBtn">+ 대여 등록</button>
+        </div>
+      </header>
+
+      <div class="page" id="page-dashboard">
+        <div id="subscriptionBanner" class="subscription-banner hidden">
+          <div>
+            <small>STARTER ACTIVE</small>
+            <b id="subscriptionBrandName">PULL STUDIO</b>
+            <span>QR 스타터 Kit · 스티커 100장 · 배송 준비중</span>
+          </div>
+          <div class="sub-price"><b>₩49,000</b><span>/ month</span></div>
+        </div>
+        <div class="metrics" id="metrics"></div>
+
+        <div class="dashboard-grid">
+          <section class="panel due-panel">
+            <div class="panel-head">
+              <div><small>ATTENTION</small><h3>Due soon</h3></div>
+              <button class="text-btn" data-goto="loans">View all</button>
+            </div>
+            <div id="dueList" class="due-list"></div>
+          </section>
+
+          <section class="panel activity-panel">
+            <div class="panel-head">
+              <div><small>LIVE</small><h3>Recent activity</h3></div>
+              <span class="live-chip">● Live</span>
+            </div>
+            <div id="recentActivity" class="activity-list"></div>
+          </section>
+        </div>
+
+        <section class="panel collection-panel">
+          <div class="panel-head">
+            <div><small>샘플 현황</small><h3>샘플 개요</h3></div>
+            <button class="text-btn" data-goto="samples">전체 샘플 보기</button>
+          </div>
+          <div id="samplePreview" class="sample-preview"></div>
+        </section>
+      </div>
+
+      <div class="page hidden" id="page-samples">
+        <section class="toolbar">
+          <div class="search-wrap"><span>⌕</span><input id="sampleSearch" placeholder="샘플명, ID, 카테고리 검색"></div>
+          <select id="statusFilter">
+            <option value="all">전체 상태</option>
+            <option value="available">대여 가능</option>
+            <option value="loan">대여 중</option>
+            <option value="overdue">연체</option>
+          </select>
+          <button class="btn btn-dark compact" id="addSampleBtn">+ 샘플 추가</button>
+        </section>
+        <section class="panel sample-table-panel">
+          <div class="table-wrap">
+            <table class="sample-table">
+              <thead><tr><th>샘플</th><th>ID</th><th>상태</th><th>대여자</th><th>반납 예정</th><th></th></tr></thead>
+              <tbody id="sampleTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <div class="page hidden" id="page-loans">
+        <div class="page-intro">
+          <div><h3>진행 중인 대여</h3><p>대여 중인 샘플과 반납 예정일을 관리합니다.</p></div>
+          <button class="btn btn-dark compact" id="newLoanBtn2">+ 대여 등록</button>
+        </div>
+        <div id="loanCards" class="loan-cards"></div>
+      </div>
+
+      <div class="page hidden" id="page-people">
+        <div class="page-intro">
+          <div><h3>대여자</h3><p>스타일리스트, 에디터, 인플루언서 등 대여자를 관리합니다.</p></div>
+          <button class="btn btn-dark compact" id="addPersonBtn">+ 대여자 추가</button>
+        </div>
+        <div id="peopleGrid" class="people-grid"></div>
+      </div>
+
+      <div class="page hidden" id="page-activity">
+        <div class="page-intro">
+          <div><h3>활동 기록</h3><p>샘플 이동의 모든 기록을 시간순으로 확인합니다.</p></div>
+        </div>
+        <section class="panel">
+          <div id="activityFull" class="activity-list full"></div>
+        </section>
+      </div>
+
+      <div class="page hidden" id="page-scan">
+        <div class="scan-layout">
+          <section class="scan-stage panel">
+            <div class="scan-reticle"><i></i><i></i><i></i><i></i><span>PULL</span></div>
+            <video id="camera" autoplay playsinline muted></video>
+            <div id="cameraFallback" class="camera-fallback">
+              <b>QR 스캔</b>
+              <p>카메라로 PULL QR을 인식하거나 샘플 ID를 입력하세요.</p>
+            </div>
+            <button class="btn btn-light" id="startCameraBtn">카메라 시작</button>
+          </section>
+          <section class="panel scan-side">
+            <small>수동 조회</small>
+            <h3>샘플 ID</h3>
+            <p>카메라 사용이 어려우면 ID로 바로 조회할 수 있습니다.</p>
+            <div class="manual-scan">
+              <input id="manualSampleId" value="PULL-0001">
+              <button class="btn btn-dark" id="lookupSampleBtn">조회</button>
+            </div>
+            <div class="demo-ids">
+              <span>예시</span>
+              <button data-id="PULL-0001">PULL-0001</button>
+              <button data-id="PULL-0002">PULL-0002</button>
+              <button data-id="PULL-0003">PULL-0003</button>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="page hidden" id="page-settings">
+        <div class="settings-grid">
+          <section class="panel">
+            <small>브랜드</small><h3>작업공간</h3>
+            <label>브랜드명<input id="brandNameInput" value="PULL STUDIO"></label>
+            <label>기본 대여 기간<select id="loanPeriodInput"><option>3일</option><option selected>7일</option><option>14일</option></select></label>
+            <label>연체 알림<select><option selected>사용</option><option>사용 안 함</option></select></label>
+            <button class="btn btn-dark" id="saveSettingsBtn">설정 저장</button>
+          </section>
+          <section class="panel">
+            <small>데이터</small><h3>데모 작업공간</h3>
+            <p class="muted">이 프로토타입의 데이터는 브라우저 localStorage에 저장됩니다.</p>
+            <button class="btn btn-outline" id="resetDemoBtn">데모 데이터 초기화</button>
+          </section>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- MODALS -->
+  <div class="modal hidden" id="sampleModal">
+    <div class="modal-card large">
+      <button class="modal-close" data-close-modal>×</button>
+      <div id="sampleModalContent"></div>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="loanModal">
+    <div class="modal-card">
+      <button class="modal-close" data-close-modal>×</button>
+      <small>새 대여 등록</small>
+      <h3>샘플 대여 등록</h3>
+      <form id="loanForm">
+        <label>샘플<select id="loanSample"></select></label>
+        <label>대여자<select id="loanPerson"></select></label>
+        <label>반납 예정일<input id="loanDue" type="date" required></label>
+        <label>사용처 / 메모<input id="loanUsage" placeholder="예: Magazine editorial / Celebrity fitting"></label>
+        <button class="btn btn-dark" type="submit">대여 등록</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="addSampleModal">
+    <div class="modal-card">
+      <button class="modal-close" data-close-modal>×</button>
+      <small>샘플 추가</small><h3>샘플 추가</h3>
+      <form id="sampleForm">
+        <label>이름<input id="newSampleName" required placeholder="레더 재킷"></label>
+        <label>카테고리<select id="newSampleCategory"><option>Outerwear</option><option>Top</option><option>Bottom</option><option>Bag</option><option>Accessory</option><option>Shoes</option></select></label>
+        <div class="form-row"><label>색상<input id="newSampleColor" placeholder="Black"></label><label>사이즈<input id="newSampleSize" placeholder="M"></label></div>
+        <button class="btn btn-dark" type="submit">샘플 추가</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="personModal">
+    <div class="modal-card">
+      <button class="modal-close" data-close-modal>×</button>
+      <small>대여자 추가</small><h3>대여자 추가</h3>
+      <form id="personForm">
+        <label>이름<input id="personName" required></label>
+        <label>역할<input id="personRole" placeholder="Stylist / Editor / Influencer"></label>
+        <label>연락처<input id="personContact" placeholder="@instagram or phone"></label>
+        <button class="btn btn-dark" type="submit">대여자 추가</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
